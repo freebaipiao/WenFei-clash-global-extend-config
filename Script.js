@@ -9,7 +9,7 @@ function main(config, profileName) {
   const all = config.proxies.map(p => p.name);
   const groups = [
 
-    { name: "🚀 节点选择", type: "select", proxies: ["♻️ 自动选择", ...all] },
+    { name: "🚀 节点选择", type: "select", proxies: [...all] },
     
     {
       name: "🐟 漏网之鱼", type: "select",
@@ -124,7 +124,7 @@ function main(config, profileName) {
     
     {
       name: "🎮 Steam下载", type: "select",
-      proxies: ["DIRECT", "🎮 游戏平台", "🔗 下载", ...all]
+      proxies: ["🔗 下载", "🎮 游戏平台", "DIRECT", ...all]
     }
     
   ];
@@ -17999,3 +17999,4 @@ function main(config, profileName) {
 
   return config;
 }
+
