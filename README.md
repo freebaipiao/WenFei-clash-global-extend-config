@@ -1,5 +1,5 @@
-# 使用方法
-![2026-03-03_13-34-59-014](https://github.com/user-attachments/assets/c5516860-8395-49c1-af81-a47c075998bf)
-将 `Merge.yaml` 中的所有内容复制到此功能中即可
-# 效果
-自行添加至clash中试用，或阅读yaml文件即可。
+# 已谈恋爱版
+# 特色
+1. 包含了地区分组
+![2026-03-05_15-57-18-732](https://github.com/user-attachments/assets/3ea1f801-0afe-402f-be4c-84ccb0641b91)
+2. 根据倍率标识，将节点分为低、普通、高倍率，且在下载相关策略组中可单独选择
