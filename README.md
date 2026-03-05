@@ -1,11 +1,21 @@
-# 实验版
-# 特色
-此版本仅将网上已有规则进行转换，以实现脱离外部订阅转换服务，直接使用机场原始订阅链接的情况下，仍能保持分流规则的一致性、体验的连续性。
-目的是验证设想的可行性以及学习全局覆写配置功能的有关用法。推荐切换至其它分支，使用其它版本。
-# 使用方法
-![2026-03-03_13-34-59-014](https://github.com/user-attachments/assets/c5516860-8395-49c1-af81-a47c075998bf)
-将 `Merge.yaml` 中的所有内容复制到此功能中即可
-使用js版时，复制到 `全局扩展脚本` 中即可
-**且，更推荐使用js版**
-# 效果
-自行添加至clash中试用，或阅读yaml文件即可。
+# 功能
+自动化完成yaml版规则至js覆写规则的样式转换
+
+# 样例
+输入
+```
+  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
+  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
+  - DOMAIN-SUFFIX,ip6-loopback,🎯 全球直连
+  - DOMAIN-SUFFIX,internal,🎯 全球直连
+```
+
+输出
+```
+  const MyRules = [
+    "DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连",
+    "DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连",
+    "DOMAIN-SUFFIX,ip6-loopback,🎯 全球直连",
+    "DOMAIN-SUFFIX,internal,🎯 全球直连"
+  ];
+```
