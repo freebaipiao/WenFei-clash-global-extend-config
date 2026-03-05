@@ -10,102 +10,90 @@ function main(config, profileName) {
   const groups = [
 
     { name: "🚀 节点选择", type: "select", proxies: ["♻️ 自动选择", ...all] },
+    
+    {
+      name: "🐟 漏网之鱼", type: "select",
+      proxies: ["🚀 节点选择", "DIRECT"]
+    },
 
     {
       name: "🔗 下载", type: "select",
-      proxies: ["DIRECT", "🚀 节点选择", "🟦 低倍率节点", "🟩 普通倍率节点", "🟥 高倍率节点", ...all]
+      proxies: ["DIRECT", "🚀 节点选择", ...all]
     },
-
-    {
-      name: "🟦 低倍率节点", type: "select",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(0\.[0-9]+x?|free|免费)/i.test(p.name)).map(p => p.name))
-    },
-
-    {
-      name: "🟩 普通倍率节点", type: "select",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(^|\D)1(\.0)?x(\D|$)/i.test(p.name)).map(p => p.name))
-    },
-
-    {
-      name: "🟥 高倍率节点", type: "select",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(^|\D)((1\.[1-9][0-9]*)|([2-9][0-9]*))x(\D|$)/i.test(p.name)).map(p => p.name))
-    },
-
-    { name: "♻️ 自动选择", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50", proxies: [...all] },
-
+    
     {
       name: "📲 电报消息", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
 
     {
       name: "💬 Ai平台", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
 
     {
       name: "📹 油管视频", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "🎥 奈飞视频", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "📺 巴哈姆特", type: "select",
-      proxies: ["🚀 节点选择", "🇨🇳 台湾节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "📺 哔哩哔哩", type: "select",
-      proxies: ["🎯 全球直连", "🇭🇰 香港节点", "🇨🇳 台湾节点", ...all]
+      proxies: ["🎯 全球直连", ...all]
     },
     
     {
       name: "🌍 国外媒体", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "🌏 国内媒体", type: "select",
-      proxies: ["DIRECT", "🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", ...all]
+      proxies: ["DIRECT", "🚀 节点选择", ...all]
     },
     
     {
       name: "📢 谷歌FCM", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "Ⓜ️ 微软Bing", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "Ⓜ️ 微软云盘", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "Ⓜ️ 微软服务", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "🍎 苹果服务", type: "select",
-      proxies: ["DIRECT", "🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", ...all]
+      proxies: ["DIRECT", "🚀 节点选择", ...all]
     },
     
     {
       name: "🎮 游戏平台", type: "select",
-      proxies: ["🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", "DIRECT", ...all]
+      proxies: ["🚀 节点选择", "DIRECT", ...all]
     },
     
     {
       name: "🎶 网易音乐", type: "select",
-      proxies: ["DIRECT", "🚀 节点选择", "🇸🇬 狮城节点", "🇭🇰 香港节点", "🇨🇳 台湾节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇰🇷 韩国节点", "🌏 东南亚节点", ...all]
+      proxies: ["DIRECT", "🚀 节点选择", ...all]
     },
     
     {
@@ -136,47 +124,7 @@ function main(config, profileName) {
     
     {
       name: "🎮 Steam下载", type: "select",
-      proxies: ["DIRECT", "🎮 游戏平台", "🔗 下载", "🟦 低倍率节点", "🟩 普通倍率节点", "🟥 高倍率节点", ...all]
-    },
-
-    {
-      name: "🐟 漏网之鱼", type: "select",
-      proxies: ["🚀 节点选择", "DIRECT"]
-    },
-
-    {
-      name: "🇭🇰 香港节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(🇭🇰|港|HK|hk|Hong Kong|HongKong|hongkong)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🇯🇵 日本节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🇺🇲 美国节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(🇺🇲|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🇨🇳 台湾节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(台|新北|彰化|TW|Taiwan)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🇸🇬 狮城节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(🇸🇬|新加坡|坡|狮城|SG|Singapore)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🇰🇷 韩国节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(🇰🇷|KR|Korea|KOR|首尔|韩|韓)/i.test(p.name)).map(p => p.name))
-    },
-    
-    {
-      name: "🌏 东南亚节点", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: "300", tolerance: "50",
-      proxies: (t => t.length ? t : ["DIRECT"])(config.proxies.filter(p => /(新加坡|坡|狮城|SG|Singapore|马来|越南|泰国|印尼|菲律宾|MY|VN|TH|ID|PH|Malaysia|Vietnam|Thailand|Indonesia|Philippines)/i.test(p.name)).map(p => p.name))
+      proxies: ["DIRECT", "🎮 游戏平台", "🔗 下载", ...all]
     }
     
   ];
