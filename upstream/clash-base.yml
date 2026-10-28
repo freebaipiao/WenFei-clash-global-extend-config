@@ -1,0 +1,184 @@
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  listen: "127.0.0.1:53"
+  enhanced-mode: "fake-ip"
+  fake-ip-range: "198.18.0.1/16"
+  fake-ip-range6: "fdfe:dcba:9876::1/64"
+  fake-ip-filter-mode: "blacklist"
+  prefer-h3: false
+  respect-rules: true
+  use-hosts: true
+  use-system-hosts: false
+  ipv6: false
+  fake-ip-filter:
+    # Local and reserved domains
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.arpa"
+
+    # Time synchronization
+    - "time.*.com"
+    - "time.*.gov"
+    - "time.*.edu.cn"
+    - "time.*.apple.com"
+    - "time1.*.com"
+    - "time2.*.com"
+    - "time3.*.com"
+    - "time4.*.com"
+    - "time5.*.com"
+    - "time6.*.com"
+    - "time7.*.com"
+    - "ntp.*.com"
+    - "ntp1.*.com"
+    - "ntp2.*.com"
+    - "ntp3.*.com"
+    - "ntp4.*.com"
+    - "ntp5.*.com"
+    - "ntp6.*.com"
+    - "ntp7.*.com"
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - "+.pool.ntp.org"
+    - "time1.cloud.tencent.com"
+
+    # Music applications
+    - "music.163.com"
+    - "*.music.163.com"
+    - "*.126.net"
+    - "musicapi.taihe.com"
+    - "music.taihe.com"
+    - "songsearch.kugou.com"
+    - "trackercdn.kugou.com"
+    - "*.kuwo.cn"
+    - "api-jooxtt.sanook.com"
+    - "api.joox.com"
+    - "joox.com"
+    - "y.qq.com"
+    - "*.y.qq.com"
+    - "streamoc.music.tc.qq.com"
+    - "mobileoc.music.tc.qq.com"
+    - "isure.stream.qqmusic.qq.com"
+    - "dl.stream.qqmusic.qq.com"
+    - "aqqmusic.tc.qq.com"
+    - "amobile.music.tc.qq.com"
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - "music.migu.cn"
+
+    # Connectivity checks
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "msftconnecttest.com"
+    - "msftncsi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+
+    # Game and STUN connectivity
+    - "+.srv.nintendo.net"
+    - "+.stun.playstation.net"
+    - "xbox.*.microsoft.com"
+    - "xnotify.xboxlive.com"
+    - "+.ipv6.microsoft.com"
+    - "+.battlenet.com.cn"
+    - "+.wotgame.cn"
+    - "+.wggames.cn"
+    - "+.wowsgame.cn"
+    - "+.wargaming.net"
+    - "stun.*.*"
+    - "stun.*.*.*"
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - "heartbeat.belkin.com"
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.router.asus.com"
+    - "*.square-enix.com"
+    - "*.finalfantasyxiv.com"
+    - "*.ffxiv.com"
+    - "*.ff14.sdo.com"
+    - "ff.dorado.sdo.com"
+    - "+.pvp.net"
+
+    # Device updates and local discovery
+    - "mesu.apple.com"
+    - "swscan.apple.com"
+    - "swquery.apple.com"
+    - "swdownload.apple.com"
+    - "swcdn.apple.com"
+    - "swdist.apple.com"
+    - "+.market.xiaomi.com"
+
+    # Developer and media services
+    - "proxy.golang.org"
+    - "*.mcdn.bilivideo.cn"
+    - "+.media.dssott.com"
+
+    # IP discovery and existing service compatibility
+    - "*.ip.sb"
+    - "*.ipip.net"
+    - "ipwho.is"
+    - "*.ipapi.is"
+    - "baidu.com"
+    - "*.baidu.com"
+    - "*.bdimg.com"
+    - "+.google.com"
+    - "+.google"
+    - "+.cloudflare.com"
+    - "+.paypal.com"
+  default-nameserver:
+    - "223.6.6.6"
+    - "223.5.5.5"
+    - "119.29.29.29"
+  nameserver:
+    - "https://dns.cloudflare.com/dns-query"
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+  nameserver-policy:
+    "geosite:cn":
+      - "https://doh.pub/dns-query"
+      - "https://dns.alidns.com/dns-query"
+  direct-nameserver-follow-policy: true
+  fallback-filter:
+    geoip: true
+    geoip-code: "CN"
+    ipcidr:
+      - "240.0.0.0/4"
+      - "0.0.0.0/32"
+    domain:
+      - "+.google.com"
+      - "+.google"
+  fallback:
+    - "https://dns.google/dns-query"
+    - "https://dns.cloudflare.com/dns-query"
+  proxy-server-nameserver:
+    - "https://dns.cloudflare.com/dns-query"
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+  direct-nameserver:
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+
+hosts:
+  # BEGIN AUTO FCM HOSTS
+  "mtalk.google.com": ["142.251.188.188", "2607:f8b0:400e:c1b::bc"]
+  "mtalk4.google.com": ["172.253.117.188", "2607:f8b0:400e:c00::bc"]
+  "mtalk-staging.google.com": ["74.125.20.188", "2607:f8b0:400e:c20::bc"]
+  "mtalk-dev.google.com": ["192.178.163.188", "2607:f8b0:400e:c07::bc"]
+  "alt1-mtalk.google.com": ["108.177.98.188", "2607:f8b0:400e:c09::bc"]
+  "alt2-mtalk.google.com": ["142.250.99.188", "2607:f8b0:400e:c02::bc"]
+  "alt3-mtalk.google.com": ["173.194.202.188", "2607:f8b0:400e:c06::bc"]
+  "alt4-mtalk.google.com": ["74.125.199.188", "2607:f8b0:400e:c0c::bc"]
+  "alt5-mtalk.google.com": ["142.250.107.188", "2607:f8b0:400e:c0a::bc"]
+  "alt6-mtalk.google.com": ["192.179.26.188", "2607:f8b0:400e:c1e::bc"]
+  "alt7-mtalk.google.com": ["74.125.142.188", "2607:f8b0:400e:c05::bc"]
+  "alt8-mtalk.google.com": ["173.194.43.188", "2607:f8b0:400e:c0d::bc"]
+  # END AUTO FCM HOSTS
