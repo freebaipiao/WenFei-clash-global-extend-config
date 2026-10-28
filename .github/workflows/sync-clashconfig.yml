@@ -1,0 +1,70 @@
+name: Sync clashconfig to ver.jiahao
+
+on:
+  schedule:
+    # Beijing time: 04:07, 10:07, 16:07, 22:07; GitHub may delay scheduled runs.
+    - cron: '7 2,8,14,20 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, ver.jiahao]
+    paths:
+      - '.github/workflows/sync-clashconfig.yml'
+      - 'scripts/**'
+      - 'requirements.txt'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-clashconfig-ver-jiahao
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'freebaipiao/WenFei-clash-global-extend-config'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the generated configuration branch
+        uses: actions/checkout@v4
+        with:
+          ref: ver.jiahao
+          path: target
+
+      - name: Check out the upstream codex branch
+        uses: actions/checkout@v4
+        with:
+          repository: freebaipiao/clashconfig
+          ref: codex
+          path: source
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the converter dependency
+        run: python -m pip install --disable-pip-version-check -r target/requirements.txt
+
+      - name: Generate all four YAML and JS versions
+        working-directory: target
+        run: python scripts/convert_ini.py --source-dir ../source
+
+      - name: Commit changed profiles and the upstream snapshot
+        working-directory: target
+        shell: bash
+        run: |
+          git add -- config.yaml config.js no_rate_config.yaml no_rate_config.js \
+            no_dns_override.yaml no_dns_override.js \
+            no_dns_override_no_rate.yaml no_dns_override_no_rate.js \
+            Merge.yaml Script.js upstream
+          if git diff --cached --quiet; then
+            echo 'Upstream configuration is unchanged.'
+            exit 0
+          fi
+          upstream_sha=$(git -C ../source rev-parse --short=12 HEAD)
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "chore(sync): Update clashconfig from ${upstream_sha}"
+          git push origin HEAD:ver.jiahao
