@@ -1,13 +1,13 @@
 {
   "repository": "freebaipiao/clashconfig",
   "branch": "codex",
-  "commit": "c1dbd5a3038b98f3609af0474cba77757961c04f",
+  "commit": "662ef752d714941fdbe59153b2b3e5a088f8903e",
   "files": {
     "config.ini": "f5ef66a999e60b216c22871be0f0ffc591945eab2de6a4ce1bb942d46eb7ecd9",
     "no_rate_config.ini": "7de6fcdf73c2edeb0b6043cdd23f4fbc0876a16d2b85c1d78f7c906c3d6ecd0b",
     "no_dns_override.ini": "de86aa742dff030b3543e3e31ad23a7e481931809df509a868cde6834a71c24b",
     "no_dns_override_no_rate.ini": "82dd5fd08ef5b14b7e5e520a1098cda7e0dd62523e06ade63e164756c2e784dc",
-    "clash-base.yml": "3f4f0b9910b9cd7573665353dc8f9b02423d2f91f265e54e9a4acda3fc608241",
+    "clash-base.yml": "59dd09952afc217b49b6589d44c3894cdc49b472920d4b684bb1eeb395ab350a",
     "steam-download.list": "d3fe345163fa03d2b244e557ac3edaa84a7e7a1ed5b234700223678a5054f48a",
     "download-process.list": "044dc1e81fab4ac8e11e5e5933eed7b7cef78f2dba89435c64d72f5606019e69",
     "ai-services.list": "f0b5c7f66f2d65690b3a261cdf32161a8922945c0a58df2426b289e4e712dd2c",
